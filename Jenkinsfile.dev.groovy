@@ -10,26 +10,26 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building stage!'
-                sh 'make build'
+                bat 'make build'
             }
         }
         stage('Unit tests') {
             steps {
-                sh 'make test-unit'
+                bat 'make test-unit'
                 archiveArtifacts artifacts: 'results/*.xml'
             }
         }
         stage('API tests') {
             steps {
                 echo 'Running API tests...'
-                sh 'make test-api'
+                bat 'make test-api'
                 archiveArtifacts artifacts: 'results/api/*.xml'
             }
         }
         stage('E2E tests') {
             steps {
                 echo 'Running E2E tests...'
-                sh 'make test-e2e'
+                bat 'make test-e2e'
                 archiveArtifacts artifacts: 'results/e2e/*.xml'
             }
         }
